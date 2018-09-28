@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  py-message-service:
+    image: py-message-service:latest
+
+  user-thrift-service:
+    image: user-thrift-service:latest
+    command:
+    - "--mysql.address=192.168.0.103"
+
+  user-edge-service:
+    image: user-edge-service:latest
+    links:
+    - user-thrift-service
+    - py-message-service
+    command:
+    - "--redis.address=192.168.0.103"
+    ports:
+    - 8082:8082
+
+  course-dubbo-service:
+    image: course-dubbo-service:latest
+    links:
+    - user-thrift-service
+    command:
+    - "--mysql.address=192.168.0.103"
+    - "--zk.address=192.168.0.103"
+
+  course-edge-service:
+    image: course-edge-service:latest
+    links:
+    - user-edge-service
+    command:
+    - "--zk.address=192.168.0.103"
+    ports:
+    - 8081:8081
+
+  api-gateway:
+    image: api-gateway:latest
+    links:
+    - user-edge-service
+    - course-edge-service
+    ports:
+    - 8083:8083
+
+
+

@@ -1,0 +1,29 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: course-edge-service
+  dubbo:
+    registry:
+      address: zookeeper://${zk.address}:2181
+      #address: zookeeper://192.168.0.103:2181
+    application:
+      id: course-edge-service
+      name: course-edge-service
+    scan: jj.fly.course
+
+#dubbo:
+#  application:
+#    id: course-edge-service
+#    name: course-edge-service
+#  registry:
+#    #address: zookeeper://${zk.address}:2181
+#    address: zookeeper://192.168.0.103:2181
+  #protocol:
+    #id: dubbo
+    #name: dubbo
+    #host: ${zk.address}
+    #host: 192.168.0.103
+    #port: 12345
+    #port: 20800

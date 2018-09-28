@@ -1,0 +1,1 @@
+docker run -it --entrypoint bash openjdk:8u181-jre
