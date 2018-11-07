@@ -1,6 +1,8 @@
 package jj.fly.course;
 
 import jj.fly.course.filter.CourseFilter;
+import org.checkerframework.checker.units.qual.A;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -26,10 +28,11 @@ public class CourseEdgeServiceApplication {
         SpringApplication.run(CourseEdgeServiceApplication.class, args);
     }
 
+
     @Bean
-    public FilterRegistrationBean filterRegistrationBean(){
+    public FilterRegistrationBean filterRegistrationBean(CourseFilter courseFilter){
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        CourseFilter courseFilter = new CourseFilter();
+
         filterRegistrationBean.setFilter(courseFilter);
 
         List<String> url = new ArrayList<>();

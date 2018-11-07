@@ -6,12 +6,17 @@ spring:
     name: course-edge-service
   dubbo:
     registry:
-      address: zookeeper://${zk.address}:2181
-      #address: zookeeper://192.168.0.103:2181
+      #address: zookeeper://${zk.address}:2181
+      address: zookeeper://172.16.0.5:2181
     application:
       id: course-edge-service
       name: course-edge-service
     scan: jj.fly.course
+
+user:
+  edge:
+    service:
+      addr: user-edge-service:8082
 
 #dubbo:
 #  application:

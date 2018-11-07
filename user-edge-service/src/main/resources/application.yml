@@ -7,10 +7,10 @@ thrift:
     ip: user-thrift-service
     port: 7911
   message:
-    ip: py-message-service
+    ip: message-service
     port: 9090
 
 spring:
   redis:
-    host: ${redis.address}
+    host: 172.16.0.5
     port: 6379

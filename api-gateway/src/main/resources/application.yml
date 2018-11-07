@@ -6,10 +6,12 @@ zuul:
     course:
       path: /course/**
       url: http://course-edge-service:8081/course/
+      #url: http://lb.jj.com:10004/course/
       # 不过滤cookie等敏感信息
       sensitiveHeaders:
     user:
       path: /user/**
+      #url: http://lb.jj.com:10003/user/
       url: http://user-edge-service:8082/user/
     # 如果只配置path、serviceId有如下简洁写法
 #    product: /myProduct/**

@@ -1,14 +1,16 @@
 thrift:
   user:
     ip: user-thrift-service
+    #ip: lb.jj.com
     port: 7911
+    #port: 10001
 
 spring:
   application:
     name: course-dubbo-service
   datasource:
-    #url: jdbc:mysql://192.168.0.103:3306/db_course
-    url: jdbc:mysql://${mysql.address}:3306/db_course
+    url: jdbc:mysql://172.16.0.5:3306/db_course
+    #url: jdbc:mysql://${mysql.address}:3306/db_course
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -19,7 +21,7 @@ spring:
     registry:
       #id: my-registry
       #address: N/A
-      address: zookeeper://${zk.address}:2181
+      address: zookeeper://172.16.0.5:2181
       #address: zookeeper://192.168.0.103:2181
     protocol:
       #id: dubbo
